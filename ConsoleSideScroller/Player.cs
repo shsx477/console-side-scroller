@@ -22,7 +22,7 @@
 
 
 
-        public void Run(ConsoleKey key)
+        public void Run(ConsoleKey inputKey)
         {
             if (!IsGround)
             {
@@ -52,7 +52,7 @@
                 }
             }
 
-            switch (key)
+            switch (inputKey)
             {
                 case ConsoleKey.Spacebar:
                     if (IsGround)

@@ -56,7 +56,7 @@
                         break;
                 }
 
-                Thread.Sleep(50);
+                Thread.Sleep(10);
             }
         }   
     }
