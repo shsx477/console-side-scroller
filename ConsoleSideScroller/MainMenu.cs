@@ -33,7 +33,6 @@
 
         private void RenderMenu()
         {
-            Console.Clear();
             Console.WriteLine();
 
             for (int i = 0; i < MenuItemTexts.Count; i++)

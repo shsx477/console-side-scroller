@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace ConsoleSideScroller
+﻿namespace ConsoleSideScroller
 {
     public class Stage
     {
@@ -10,11 +8,10 @@ namespace ConsoleSideScroller
         private Player CurrentPlayer;
         private List<Obstacle> Obstacles = new List<Obstacle>();
         private List<Obstacle> TempDeleteObstacles = new List<Obstacle>();
-        private Stopwatch ObstacleStopWatch = new Stopwatch();
         private int TotalObstacleCount;
-        private DateTime NextSpeedUpdateTime;
         private int GamePlaySpeedOffset = 40;
-        private TimeSpan RandomObstacleResponeTime;
+        private DateTime NextSpeedUpdateTime;
+        private DateTime NextObstacleResponeTime;
 
 
 
@@ -22,9 +19,7 @@ namespace ConsoleSideScroller
         {
             CurrentPlayer = new Player(20, FLOOR_Y);
             NextSpeedUpdateTime = DateTime.Now.AddSeconds(3);
-
-            ObstacleStopWatch.Start();
-            ResetRandomResponeTime();
+            NextObstacleResponeTime = DateTime.Now.AddSeconds(2);
         }
 
 
@@ -40,7 +35,7 @@ namespace ConsoleSideScroller
                     break;
             }
 
-            CreateObstacleOrNot();
+            CreateObstacle();
 
             Console.Clear();
 
@@ -58,7 +53,7 @@ namespace ConsoleSideScroller
             if (CheckClear())
                 return false;
 
-            UpdateGameSpeed();
+            CheckGameSpeed();
 
             Thread.Sleep(GamePlaySpeedOffset);
 
@@ -75,21 +70,15 @@ namespace ConsoleSideScroller
             Console.WriteLine(floor);
         }
 
-        private void ResetRandomResponeTime()
-        {
-            RandomObstacleResponeTime = TimeSpan.FromSeconds(Random.Shared.Next(2, 5));
-        }
-
-        private void CreateObstacleOrNot()
+        private void CreateObstacle()
         {
             if (TotalObstacleCount < MAX_OBSTACLE_COUNT
-                && ObstacleStopWatch.Elapsed > RandomObstacleResponeTime)
+                && NextObstacleResponeTime < DateTime.Now)
             {
                 TotalObstacleCount++;
 
                 Obstacles.Add(new Obstacle(100, FLOOR_Y));
-                ObstacleStopWatch.Restart();
-                ResetRandomResponeTime();
+                NextObstacleResponeTime = DateTime.Now.AddSeconds(Random.Shared.Next(2, 5));
             }
         }
 
@@ -140,7 +129,7 @@ namespace ConsoleSideScroller
             return false;
         }
 
-        private void UpdateGameSpeed()
+        private void CheckGameSpeed()
         {
             if (NextSpeedUpdateTime < DateTime.Now)
             {
