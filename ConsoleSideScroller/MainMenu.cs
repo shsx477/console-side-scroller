@@ -33,6 +33,9 @@
 
         private void RenderMenu()
         {
+            Console.WriteLine("\r\n           ________               \r\n           ___  __ \\___  ________ \r\n           __  /_/ /  / / /_  __ \\\r\n           _  _, _// /_/ /_  / / /\r\n           /_/ |_| \\__,_/ /_/ /_/ \r\n                                  \r\n");
+            Console.WriteLine();
+
             for (int i = 0; i < MenuItemTexts.Count; i++)
             {
                 string arrow = (i == (int)SelectedMenuItem) ? "▶ " : "   ";

@@ -1,9 +1,15 @@
-﻿namespace ConsoleSideScroller
+﻿using System.Runtime.Versioning;
+
+namespace ConsoleSideScroller
 {
     internal class Program
     {
+        [SupportedOSPlatform("windows")]
         static void Main(string[] args)
         {
+            Console.SetWindowSize(100, 40);
+            Console.SetBufferSize(100, 40);
+
             Define.WindowMode selectedWindow = Define.WindowMode.MainMenu;
 
             var mainMenu = new MainMenu();
