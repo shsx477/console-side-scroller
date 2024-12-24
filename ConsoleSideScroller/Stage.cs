@@ -37,7 +37,7 @@
 
             CreateObstacle();
 
-            Console.Clear();
+            Util.ClearConsole();
 
             RenderObstacles();
 
@@ -78,7 +78,7 @@
                 TotalObstacleCount++;
 
                 Obstacles.Add(new Obstacle(100, FLOOR_Y));
-                NextObstacleResponeTime = DateTime.Now.AddSeconds(Random.Shared.Next(2, 5));
+                NextObstacleResponeTime = DateTime.Now.AddSeconds(Random.Shared.Next(1, 3));
             }
         }
 

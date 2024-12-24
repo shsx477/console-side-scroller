@@ -36,7 +36,7 @@
                                     case Define.MenuItem.Start:
                                         selectedWindow = Define.WindowMode.Game;
                                         stage = new Stage();
-                                        Console.Clear();
+                                        Util.ClearConsole();
                                         break;
                                     case Define.MenuItem.Exit:
                                         return;

@@ -10,7 +10,7 @@
 
         public void Run(ConsoleKey inputKey)
         {
-            Console.Clear();
+            Util.ClearConsole();
 
             switch (inputKey)
             {
@@ -33,12 +33,10 @@
 
         private void RenderMenu()
         {
-            Console.WriteLine();
-
             for (int i = 0; i < MenuItemTexts.Count; i++)
             {
-                string prefix = (i == (int)SelectedMenuItem) ? "▶ " : "   ";
-                Console.WriteLine(prefix + MenuItemTexts[i]);
+                string arrow = (i == (int)SelectedMenuItem) ? "▶ " : "   ";
+                Console.WriteLine(arrow + MenuItemTexts[i]);
             }
         }
     }
