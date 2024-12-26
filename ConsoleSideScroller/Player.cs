@@ -2,11 +2,10 @@
 {
     public class Player
     {
-        private const char PlayerChar = '▣';
+        private const char PLAYER_CHARACTER = '▣';
 
-        public int CurrentPosX;
-        public int CurrentPosY;
-
+        private int CurrentPosX;
+        private int CurrentPosY;
         private int MaxJumpPower = 10;
         private int YOffset = 0;
         private bool IsGround = true;
@@ -72,7 +71,7 @@
             CurrentPosY = floorY - 1 - YOffset;
 
             Console.SetCursorPosition(x, CurrentPosY);
-            Console.WriteLine(PlayerChar);
+            Console.WriteLine(PLAYER_CHARACTER);
         }
 
         public bool IsHit(Obstacle obstacle)

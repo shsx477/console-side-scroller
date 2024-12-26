@@ -4,6 +4,11 @@ namespace ConsoleSideScroller
 {
     internal class Program
     {
+        private static MainMenu Menu = new MainMenu();
+        private static GameStage Stage = null;
+
+
+
         [SupportedOSPlatform("windows")]
         static void Main(string[] args)
         {
@@ -12,12 +17,10 @@ namespace ConsoleSideScroller
 
             Define.WindowMode selectedWindow = Define.WindowMode.MainMenu;
 
-            var mainMenu = new MainMenu();
             var inputKey = ConsoleKey.None;
-            Stage stage = null;
 
             // 초기 메뉴 렌더
-            mainMenu.Run(ConsoleKey.None);
+            Menu.Run(ConsoleKey.None);
 
             while (true)
             {
@@ -32,16 +35,16 @@ namespace ConsoleSideScroller
                         if (inputKey != ConsoleKey.None)
                         {
                             // MainMenu에 키 전달
-                            mainMenu.Run(inputKey);
+                            Menu.Run(inputKey);
 
                             // 엔터 입력 -> 선택된 메뉴 실행
                             if (inputKey == ConsoleKey.Enter)
                             {
-                                switch (mainMenu.SelectedMenuItem)
+                                switch (Menu.SelectedMenuItem)
                                 {
                                     case Define.MenuItem.Start:
                                         selectedWindow = Define.WindowMode.Game;
-                                        stage = new Stage();
+                                        Stage = new GameStage();
                                         Util.ClearConsole();
                                         break;
                                     case Define.MenuItem.Exit:
@@ -51,10 +54,10 @@ namespace ConsoleSideScroller
                         }
                         break;
                     case Define.WindowMode.Game:
-                        if (!stage?.Run(inputKey) ?? false)
+                        if (!Stage?.Run(inputKey) ?? false)
                         {
                             selectedWindow = Define.WindowMode.MainMenu;
-                            mainMenu.Run(ConsoleKey.None);
+                            Menu.Run(ConsoleKey.None);
                         }
 
                         break;

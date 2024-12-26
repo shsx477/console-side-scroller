@@ -1,6 +1,6 @@
 ﻿namespace ConsoleSideScroller
 {
-    public class Stage
+    public class GameStage
     {
         private const int FLOOR_Y = 20;
         private const int MAX_OBSTACLE_COUNT = 5;
@@ -15,11 +15,11 @@
 
 
 
-        public Stage()
+        public GameStage()
         {
             CurrentPlayer = new Player(20, FLOOR_Y);
-            NextSpeedUpdateTime = DateTime.Now.AddSeconds(3);
-            NextObstacleResponeTime = DateTime.Now.AddSeconds(2);
+            NextSpeedUpdateTime = DateTime.Now.AddSeconds(2);
+            NextObstacleResponeTime = DateTime.Now.AddSeconds(1);
         }
 
 
@@ -50,7 +50,7 @@
             if (CheckHit())
                 return false;
 
-            if (CheckClear())
+            if (CheckStageClear())
                 return false;
 
             CheckGameSpeed();
@@ -116,7 +116,7 @@
             return false;
         }
 
-        private bool CheckClear()
+        private bool CheckStageClear()
         {
             if (TotalObstacleCount >= MAX_OBSTACLE_COUNT && Obstacles.Count <= 0)
             {

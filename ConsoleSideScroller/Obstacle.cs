@@ -2,7 +2,7 @@
 {
     public class Obstacle
     {
-        private const char ObstacleChar = '■';
+        private const char OBSTACLE_CHARACTER = '■';
 
         private int X;
         private int Y;
@@ -30,7 +30,7 @@
             if (X < 0)
                 return false;
 
-            var wTemp = new string(ObstacleChar, Width);
+            var wTemp = new string(OBSTACLE_CHARACTER, Width);
             
             for (int i = 0; i < Height; i++)
             {
