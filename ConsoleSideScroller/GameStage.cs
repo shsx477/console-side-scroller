@@ -48,7 +48,10 @@
             RenderFloor();
 
             if (CheckHit())
+            {
+                Obstacles.Clear();
                 return false;
+            }
 
             if (CheckStageClear())
                 return false;
@@ -104,8 +107,6 @@
                 {
                     Console.SetCursorPosition(20, 10);
                     Console.WriteLine("Game Over...");
-
-                    Obstacles.Clear();
 
                     Thread.Sleep(3000);
 
