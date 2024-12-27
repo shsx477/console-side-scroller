@@ -23,6 +23,20 @@
 
         public void Run(ConsoleKey inputKey)
         {
+            switch (inputKey)
+            {
+                case ConsoleKey.Spacebar:
+                    if (IsGround)
+                    {
+                        IsGround = false;
+                        IsJumpUp = true;
+                        YOffset = 1;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
             if (!IsGround)
             {
                 if (IsJumpUp)
@@ -49,20 +63,6 @@
                         YOffset--;
                     }
                 }
-            }
-
-            switch (inputKey)
-            {
-                case ConsoleKey.Spacebar:
-                    if (IsGround)
-                    {
-                        IsGround = false;
-                        IsJumpUp = true;
-                        YOffset = 1;
-                    }
-                    break;
-                default:
-                    break;
             }
         }
 

@@ -24,7 +24,7 @@
 
 
         public bool RenderObstacle(int floorY)
-        {   
+        {
             --X;
 
             if (X < 0)

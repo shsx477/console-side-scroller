@@ -14,6 +14,7 @@ namespace ConsoleSideScroller
         {
             Console.SetWindowSize(100, 40);
             Console.SetBufferSize(100, 40);
+            Console.CursorVisible = false;
 
             Define.WindowMode selectedWindow = Define.WindowMode.MainMenu;
 
