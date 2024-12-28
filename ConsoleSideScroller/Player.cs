@@ -3,13 +3,15 @@
     public class Player
     {
         private const char PLAYER_CHARACTER = '▣';
-
+        private const int BEEP_INCRESE_UNIT = 30;
+        
         private int CurrentPosX;
         private int CurrentPosY;
         private int MaxJumpPower = 10;
         private int YOffset = 0;
         private bool IsGround = true;
         private bool IsJumpUp = false;
+        private int StartBeep = 200;
 
 
 
@@ -31,6 +33,12 @@
                         IsGround = false;
                         IsJumpUp = true;
                         YOffset = 1;
+
+                        Task.Run(() =>
+                        {
+                            Console.Beep(StartBeep, 250);
+                            StartBeep += BEEP_INCRESE_UNIT;
+                        });
                     }
                     break;
                 default:

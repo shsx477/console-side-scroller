@@ -3,7 +3,7 @@
     public class GameStage
     {
         private const int FLOOR_Y = 20;
-        private const int MAX_OBSTACLE_COUNT = 5;
+        private const int MAX_OBSTACLE_COUNT = 20;
 
         private Player CurrentPlayer;
         private List<Obstacle> Obstacles = new List<Obstacle>();
@@ -81,7 +81,7 @@
                 TotalObstacleCount++;
 
                 Obstacles.Add(new Obstacle(100, FLOOR_Y));
-                NextObstacleResponeTime = DateTime.Now.AddSeconds(Random.Shared.Next(1, 3));
+                NextObstacleResponeTime = DateTime.Now.AddSeconds(Random.Shared.Next(1000, 2001) / 1000);
             }
         }
 
